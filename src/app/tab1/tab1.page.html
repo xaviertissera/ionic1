@@ -1,8 +1,15 @@
 <ion-header translucent="true">
   <ion-toolbar>
     <ion-title>Inventory</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showHelp()" color="primary">
+        <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+        Help
+      </ion-button>      
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content fullscreen="true">
   <ion-card>
