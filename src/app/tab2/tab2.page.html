@@ -1,17 +1,70 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title>Add New Item</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+
+  <!-- Add Record Form -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>New Inventory Item</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Feedback Message -->
+      <ion-text *ngIf="messageLines.length > 0" [color]="error ? 'danger' : 'success'">
+
+        <ul style="padding-left: 1rem;">
+          <li *ngFor="let msg of messageLines">{{ msg }}</li>
+        </ul>
+      </ion-text>
+      <ion-input label="Item Name*" [(ngModel)]="newItem.item_name"></ion-input>
+      <ion-select label="Category*" [(ngModel)]="newItem.category">
+        <ion-select-option value="Electronics">Electronics</ion-select-option>
+        <ion-select-option value="Furniture">Furniture</ion-select-option>
+        <ion-select-option value="Clothing">Clothing</ion-select-option>
+        <ion-select-option value="Tools">Tools</ion-select-option>
+        <ion-select-option value="Miscellaneous">Miscellaneous</ion-select-option>
+      </ion-select>
+
+      <!-- Regular input field (text), but validated for numeric only -->
+      <ion-input label="Quantity*" [(ngModel)]="newItem.quantity" placeholder="e.g. 10"></ion-input>
+      <ion-input label="Price*" [(ngModel)]="newItem.price" placeholder="e.g. 1200"></ion-input>
+
+      <ion-input label="Supplier Name*" [(ngModel)]="newItem.supplier_name"></ion-input>
+      <ion-select label="Stock Status*" [(ngModel)]="newItem.stock_status">
+        <ion-select-option value="In stock">In stock</ion-select-option>
+        <ion-select-option value="Low stock">Low stock</ion-select-option>
+        <ion-select-option value="Out of stock">Out of stock</ion-select-option>
+      </ion-select>
+      <ion-toggle [(ngModel)]="newItem.featured_item" [checked]="false">Featured</ion-toggle>
+      <ion-textarea label="Special Note" [(ngModel)]="newItem.special_note"></ion-textarea>
+
+      <ion-button expand="block" (click)="addRecord()">Add Item</ion-button>
+
+    </ion-card-content>
+
+  </ion-card>
+
+
+
+  <!-- Featured Items List -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Featured Items</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let item of featuredItems">
+          <ion-label>
+            <strong>{{ item.item_name }}</strong><br>
+            Category: {{ item.category }}<br>
+            Qty: {{ item.quantity }} | ${{ item.price }}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

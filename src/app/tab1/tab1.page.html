@@ -1,17 +1,62 @@
-<ion-header [translucent]="true">
+<ion-header translucent="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title>Inventory</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content fullscreen="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Search by Item Name</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-input [(ngModel)]="name1" placeholder="Enter item name" required></ion-input>
+      <ion-button expand="block" (click)="getRecord()">Search</ion-button>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+      <!-- Validation message -->
+      <ion-text *ngIf="message" [color]="error ? 'danger' : 'success'">
+        <p>{{ message }}</p>
+      </ion-text>
+
+      <!-- Display record if found -->
+      <div *ngIf="record">
+        <ion-item>
+          <p>
+            <strong>{{record.item_name}}</strong><br>
+            Category: {{record.category}}<br>
+            Quantity: {{record.quantity}}<br>
+            Price: ${{record.price}}<br>
+            Supplier: {{record.supplier_name}}<br>
+            Status: {{record.stock_status}}<br>
+            Featured: {{record.featured_item}}<br>
+            Note: {{record.special_note || 'None'}}
+          </p>
+        </ion-item>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>All Items</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="block" color="primary" (click)="getAllRecords()">Load All</ion-button>
+      <ion-list>
+        <ion-item *ngFor="let rec of records">
+          <ion-label>
+            <strong>{{ rec.item_name }}</strong><br>
+            Category: {{ rec.category }}<br>
+            Quantity: {{ rec.quantity }}<br>
+            Price: ${{ rec.price }}<br>
+            Supplier: {{ rec.supplier_name }}<br>
+            Stock Status: {{ rec.stock_status }}<br>
+            Featured: {{ rec.featured_item === 1 ? 'Yes' : 'No' }}<br>
+            Special Note: {{ rec.special_note || 'None' }}
+          </ion-label>
+        </ion-item>
+        
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
