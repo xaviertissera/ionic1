@@ -1,17 +1,155 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Privacy & Security</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="shield-checkmark-outline" slot="start"></ion-icon>
+        Privacy and Security Overview
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        This mobile inventory management application is committed to protecting user data and maintaining secure access to inventory information. Below are the key privacy and security principles integrated into the system.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Section: Data Collection -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>1. Data Collection</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        No personal or sensitive user data is collected. Only inventory-related information such as item name, category, quantity, price, and supplier details is handled.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Section: Data Transmission -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>2. Data Storage and Transmission</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        All data communications use HTTPS to ensure encrypted and secure transmission between the app and the official REST API (<code>https://prog2005.it.scu.edu.au/ArtGalley</code>).
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Section: Access Control -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>3. Access Control</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        While current access is unrestricted for learning purposes, the system supports secure operations with assumed backend role-based access control in production.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Section: Permissions -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>4. Device and App Permissions</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        The app does not request or access any native device features such as storage, location, or camera. It operates completely within the browser or webview.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Section: Audit -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>5. Immutable Audit Fields</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        Specific records like "Laptop" are protected and cannot be deleted. This preserves essential data during demonstrations and supports learning integrity.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Section: Validation -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>6. Data Validation</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        Input fields such as Quantity and Price are validated to accept numeric values only. Required fields are checked before form submission to ensure data integrity.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Section: External APIs -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>7. External APIs</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        The app communicates only with a single official API hosted by Southern Cross University. No third-party services are contacted.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Section: Consent -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>8. User Consent</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        As the app does not handle personal user data, consent dialogs are not required. Future enhancements involving authentication will include proper consent flows.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Section: Security Practices -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>9. App Security Practices</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-icon name="checkmark-circle" slot="start" color="success"></ion-icon>
+          <ion-label>All HTTP requests are secured with HTTPS and Angular HttpClient.</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="checkmark-circle" slot="start" color="success"></ion-icon>
+          <ion-label>UI restricts invalid operations such as deleting protected records.</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="checkmark-circle" slot="start" color="success"></ion-icon>
+          <ion-label>User-friendly error messages guide secure interaction.</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Section: Summary -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>10. Summary</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        This system is designed with student safety and responsible development in mind. It demonstrates modern app security techniques while allowing a smooth and friendly user experience.
+      </p>
+      <p>If you have questions, contact your instructor or system administrator.</p>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
