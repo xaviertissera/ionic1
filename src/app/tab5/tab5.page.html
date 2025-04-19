@@ -1,0 +1,82 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>Update & Delete Item</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding">
+  
+    <!-- Search by name -->
+    <ion-item>
+      <ion-label position="stacked">Enter Item Name</ion-label>
+      <ion-input [(ngModel)]="name" placeholder="e.g. Laptop"></ion-input>
+    </ion-item>
+  
+    <ion-button expand="block" (click)="loadItem()">Load Item</ion-button>
+  
+    <!-- Display form only when record is loaded -->
+    <div *ngIf="record">
+  
+      <ion-item>
+        <ion-label position="stacked">Item Name</ion-label>
+        <ion-input [(ngModel)]="record.item_name"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Category</ion-label>
+        <ion-select [(ngModel)]="record.category">
+          <ion-select-option value="Electronics">Electronics</ion-select-option>
+          <ion-select-option value="Furniture">Furniture</ion-select-option>
+          <ion-select-option value="Clothing">Clothing</ion-select-option>
+          <ion-select-option value="Tools">Tools</ion-select-option>
+          <ion-select-option value="Miscellaneous">Miscellaneous</ion-select-option>
+        </ion-select>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Quantity</ion-label>
+        <ion-input type="number" [(ngModel)]="record.quantity"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Price</ion-label>
+        <ion-input type="number" [(ngModel)]="record.price"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Supplier Name</ion-label>
+        <ion-input [(ngModel)]="record.supplier_name"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Stock Status</ion-label>
+        <ion-select [(ngModel)]="record.stock_status">
+          <ion-select-option value="In stock">In stock</ion-select-option>
+          <ion-select-option value="Low stock">Low stock</ion-select-option>
+          <ion-select-option value="Out of stock">Out of stock</ion-select-option>
+        </ion-select>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Featured Item</ion-label>
+        <ion-toggle [(ngModel)]="record.featured_item" (ionChange)="record.featured_item = $event.detail.checked ? 1 : 0"></ion-toggle>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Special Note</ion-label>
+        <ion-textarea [(ngModel)]="record.special_note"></ion-textarea>
+      </ion-item>
+  
+      <ion-button expand="block" color="warning" (click)="updateItem()">Update Item</ion-button>
+      <ion-button expand="block" color="danger" (click)="deleteItem()">Delete Item</ion-button>
+    </div>
+  
+    <!-- Message Feedback -->
+    <ion-text color="success" *ngIf="message && !error">
+      <p>{{ message }}</p>
+    </ion-text>
+    <ion-text color="danger" *ngIf="message && error">
+      <p>{{ message }}</p>
+    </ion-text>
+  </ion-content>
+  
