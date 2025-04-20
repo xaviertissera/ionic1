@@ -1,8 +1,15 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header translucent="true">
+  <ion-toolbar color="primary">
     <ion-title>About This App</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showHelp()" color="light">
+        <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+        Help
+      </ion-button>      
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content class="ion-padding">
   <h2><u>Inventory Management System</u></h2>

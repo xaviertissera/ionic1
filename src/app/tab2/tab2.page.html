@@ -1,8 +1,15 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header translucent="true">
+  <ion-toolbar color="primary">
     <ion-title>Add New Item</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showHelp()" color="light">
+        <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+        Help
+      </ion-button>      
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content class="ion-padding">
 

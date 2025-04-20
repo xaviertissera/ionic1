@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MyData } from '../service/my.data';
 import { DataService } from '../service/data.service';
+import { AlertController } from '@ionic/angular'
 
 @Component({
   selector: 'app-tab2',
@@ -21,12 +22,27 @@ export class Tab2Page {
     special_note: ''
   };
 
+
+
   // Featured item list and message state
   featuredItems: MyData[] = [];
   messageLines: string[] = []; // holds multiple lines of success/error feedback
   error: boolean = false;
 
-  constructor(private service: DataService) {}
+  // Dependency injection
+  constructor(private service: DataService, private alertController: AlertController) {}
+
+  // Show help
+  async showHelp() {
+    const alert = await this.alertController.create({
+      header: 'Help - Add Inventory Item',
+      message: 'On this page, you can add new items to the inventory. Ensure that all required fields such as Item Name, Category, Quantity, Price, Supplier Name, and Stock Status are filled correctly before submitting. Quantity and Price fields must contain numeric values only. You may also mark an item as featured, which will include it in the Featured Items section displayed below the form. After successful submission, the form resets and a confirmation message is shown. This page helps maintain up-to-date stock records and highlights key items.'
+  ,
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
 
   // Check if a value is numeric using regex
   isNumeric(value: any): boolean {

@@ -9,6 +9,8 @@ import { AlertController } from '@ionic/angular'
   styleUrls: ['tab1.page.scss'],
   standalone: false,
 })
+
+// Tab1Page
 export class Tab1Page {
   name1: string = '';
   record?: MyData;
@@ -16,21 +18,21 @@ export class Tab1Page {
   message: string = ''; // For showing success/error messages
   error: boolean = false;
 
+  // Dependency injection
   constructor(private service: DataService, private alertController: AlertController) {}
 
+  // Show help
   async showHelp() {
     const alert = await this.alertController.create({
-      header: 'Help - Inventory Search',
-      message: `
-        Use the search box to enter an item name and find details.
-        Click "Load All" to view all inventory records from the system.
-        Make sure to enter a valid item name (case sensitive).
-      `,
+      header: 'Help - Search Items',
+      message: 'This page allows you to search for specific inventory items by entering their names in the input field. Once you type the name and press the search button, the system will retrieve and display the matching item’s details. If no match is found, a helpful error message will appear. You can also press the "Load All" button to display a list of all items currently in the inventory database. This is useful when browsing or verifying item availability. Make sure to type item names exactly as they appear, as the search is case sensitive and matches exact names only.'
+      ,
       buttons: ['OK'],
     });
 
     await alert.present();
   }
+  // Get record
   getRecord() {
     this.message = '';
     this.error = false;
@@ -42,6 +44,7 @@ export class Tab1Page {
       return;
     }
 
+    // Fetch data
     this.service.getData(this.name1.trim()).subscribe({
       next: (d: MyData[]) => {
         if (d.length === 0) {
@@ -62,6 +65,7 @@ export class Tab1Page {
     });
   }
 
+  // Get all records
   getAllRecords() {
     this.service.getAllData().subscribe({
       next: (data: MyData[]) => this.records = data,

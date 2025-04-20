@@ -18,6 +18,17 @@ export class Tab5Page {
 
   constructor(private service: DataService, private alertController: AlertController) {}
 
+  async showHelp() {
+    const alert = await this.alertController.create({
+      header: 'Help - Update or Delete Items',
+      message: 'This page enables you to update or remove inventory items. To get started, search for an item by name. Once retrieved, you can edit its details and click the save button to apply changes. If the item needs to be removed from the inventory, you can use the delete option, which will prompt you for confirmation before deletion. Please note that deletion is restricted for certain items like "Laptop" to prevent the demonstration database from being empty. This feature supports inventory maintenance by ensuring outdated or incorrect records can be quickly managed.'
+,
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
+  
   // Load item by name
   loadItem() {
     this.message = '';
